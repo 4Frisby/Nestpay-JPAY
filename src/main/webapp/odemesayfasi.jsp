@@ -86,7 +86,9 @@
     %>
                 <h5>3D İşlemi Başarılı</h5><br/>
             <%
-                                            			String paymentHost = "entegrasyon.asseco-see.com.tr"; //Ödeme geçidi hos ismi
+                                            			String paymentHost = "entegrasyon.asseco-see.com.tr"; 
+            											//testvpos.asseco-see.com.tr
+            											//Ödeme geçidi hos ismi
                                             			String api = "/fim/api"; //
                                             			int port = 443;
                                             			jpay myjpay = new jpay();
