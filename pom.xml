@@ -81,6 +81,15 @@
 			<artifactId>jpayJpay</artifactId>
 			<version>2.11</version>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
+<dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>servlet-api</artifactId>
+    <version>2.5</version>
+    <scope>provided</scope>
+</dependency>
+		
 
 	</dependencies>
 

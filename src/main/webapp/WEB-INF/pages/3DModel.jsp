@@ -28,8 +28,8 @@
         String clientId = "230010000";     //Banka tarafından verilen işyeri numarası
         String amount = "9.95";       //İşlem tutarı
         String oid = "";       //Sipariş numarası
-        String okUrl = "http://localhost:8080/basicWeb/odemesayfasi.jsp";   //İşlem başarılıysa dönülecek işyeri sayfası  (3D işleminin sonucu ödeme işleminin değil)
-        String failUrl = "http://localhost:8080/basicWeb/odemesayfasi.jsp"; //İşlem başarısız ise dönülecek işyeri sayfası(3D işleminin sonucu ödeme işleminin değil)
+        String okUrl = "https://localhost:8443/basicWeb/odemesayfasi";   //İşlem başarılıysa dönülecek işyeri sayfası  (3D işleminin sonucu ödeme işleminin değil)
+        String failUrl = "https://localhost:8443/basicWeb/odemesayfasi"; //İşlem başarısız ise dönülecek işyeri sayfası(3D işleminin sonucu ödeme işleminin değil)
         String rnd = new java.util.Date().toString(); // Tarih veya her seferinde değişen bir değer güvenlik amaçlı kullanılıyor
         
         String storekey="LONDON1234";       //İşyeri ayıracı (işyeri anahtarı)
@@ -73,6 +73,27 @@
         
         
     %>
+    <%   String ip = request.getHeader("X-Forwarded-For");  
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {  
+            ip = request.getHeader("Proxy-Client-IP");  
+        }  
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {  
+            ip = request.getHeader("WL-Proxy-Client-IP");  
+        }  
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {  
+            ip = request.getHeader("HTTP_CLIENT_IP");  
+        }  
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {  
+            ip = request.getHeader("HTTP_X_FORWARDED_FOR");  
+        }  
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {  
+            ip = request.getRemoteAddr();  
+        }
+        %>
+        
+        My �P : <%=ip  %>
+        <br/>
+        
         <center>
             <form method="post" action="https://entegrasyon.asseco-see.com.tr/fim/est3Dgate">
                 <table>

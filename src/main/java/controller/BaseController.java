@@ -1,6 +1,12 @@
 package controller;
 
+import java.util.Enumeration;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,5 +32,19 @@ public class BaseController {
 
     }
 
+    @RequestMapping(value = "/odemesayfasi", method = {RequestMethod.GET,RequestMethod.POST})
+    public void odemesayfasi(HttpServletRequest request,HttpServletResponse response,ModelMap model) {
+        
+    	
+    	Enumeration enu = request.getParameterNames();
+    	while (enu.hasMoreElements()) {
+    		String param = (String) enu.nextElement();
+    		String val = (String) request.getParameter(param);
+    		System.out.println("<tr><td>" + param + "</td>" + "<td>" + val + "</td></tr>");
+    	}
+
+    }
+    
+    
 
 }
